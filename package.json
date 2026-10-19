@@ -1,0 +1,14 @@
+{
+  "name": "drop-vertical-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "build:pages": "node scripts/build-pages.mjs",
+    "test": "node --test tests/seo.test.mjs",
+    "test:pages": "node --test tests/pages.test.mjs"
+  },
+  "devDependencies": {
+    "linkedom": "0.18.13"
+  }
+}

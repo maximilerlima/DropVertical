@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+# Preview: noindex is on every HTML document and response. Crawling stays allowed so robots can read it.

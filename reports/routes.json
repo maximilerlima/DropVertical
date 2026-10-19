@@ -1,0 +1,111 @@
+{
+  "origin": "https://maximilerlima.github.io",
+  "environment": "preview",
+  "pages": [
+    {
+      "key": "home",
+      "lang": "pt",
+      "route": "/"
+    },
+    {
+      "key": "home",
+      "lang": "en",
+      "route": "/en/"
+    },
+    {
+      "key": "home",
+      "lang": "es",
+      "route": "/es/"
+    },
+    {
+      "key": "surf",
+      "lang": "pt",
+      "route": "/aulas-de-surf/"
+    },
+    {
+      "key": "surf",
+      "lang": "en",
+      "route": "/en/surf-lessons/"
+    },
+    {
+      "key": "surf",
+      "lang": "es",
+      "route": "/es/clases-de-surf/"
+    },
+    {
+      "key": "sup",
+      "lang": "pt",
+      "route": "/aulas-de-stand-up/"
+    },
+    {
+      "key": "sup",
+      "lang": "en",
+      "route": "/en/stand-up-paddle-lessons/"
+    },
+    {
+      "key": "sup",
+      "lang": "es",
+      "route": "/es/clases-de-paddle-surf/"
+    },
+    {
+      "key": "kite",
+      "lang": "pt",
+      "route": "/aulas-de-kitesurf/"
+    },
+    {
+      "key": "kite",
+      "lang": "en",
+      "route": "/en/kitesurf-lessons/"
+    },
+    {
+      "key": "kite",
+      "lang": "es",
+      "route": "/es/clases-de-kitesurf/"
+    },
+    {
+      "key": "rental",
+      "lang": "pt",
+      "route": "/aluguel-de-equipamentos/"
+    },
+    {
+      "key": "rental",
+      "lang": "en",
+      "route": "/en/equipment-rental/"
+    },
+    {
+      "key": "rental",
+      "lang": "es",
+      "route": "/es/alquiler-de-equipos/"
+    },
+    {
+      "key": "school",
+      "lang": "pt",
+      "route": "/a-escola/"
+    },
+    {
+      "key": "school",
+      "lang": "en",
+      "route": "/en/about-us/"
+    },
+    {
+      "key": "school",
+      "lang": "es",
+      "route": "/es/la-escuela/"
+    },
+    {
+      "key": "privacy",
+      "lang": "pt",
+      "route": "/privacidade/"
+    },
+    {
+      "key": "privacy",
+      "lang": "en",
+      "route": "/en/privacy/"
+    },
+    {
+      "key": "privacy",
+      "lang": "es",
+      "route": "/es/privacidad/"
+    }
+  ]
+}
