@@ -5,7 +5,11 @@ import { fileURLToPath } from 'node:url';
 import { parseHTML } from 'linkedom';
 
 const root=fileURLToPath(new URL('../',import.meta.url));
-const url=new URL(process.env.PAGES_URL || 'https://maximilerlima.github.io/DropVertical/');
+// A Pages custom domain serves the project at /, not /<repository>/.
+// Read the tracked CNAME so the next build cannot silently restore broken paths.
+const cname=await fs.readFile(path.join(root,'docs/CNAME'),'utf8').then(s=>s.trim()).catch(e=>{if(e.code==='ENOENT')return '';throw e;});
+const url=new URL(process.env.PAGES_URL || (cname ? `https://${cname}/` : 'https://maximilerlima.github.io/DropVertical/'));
+if(cname && (url.hostname!==cname || url.pathname!=='/'))throw Error('PAGES_URL must match the custom domain in docs/CNAME and use its root path');
 if(!['http:','https:'].includes(url.protocol))throw Error('PAGES_URL must be an absolute HTTP(S) URL');
 if(url.search||url.hash)throw Error('PAGES_URL cannot include a query or fragment');
 const basePath=url.pathname.replace(/\/$/,'');

@@ -1,7 +1,7 @@
 // Use SITE_URL and SITE_ENV=production only after confirming the final domain.
 // GitHub Pages project URL derived from the confirmed repository owner/name.
 export const site = {
-  siteUrl: process.env.SITE_URL || process.env.PAGES_URL || 'https://maximilerlima.github.io/DropVertical/',
+  siteUrl: process.env.SITE_URL || process.env.PAGES_URL || 'https://dropverticalrj.com.br/',
   environment: process.env.SITE_ENV || 'preview',
   name: 'Drop Vertical — Escola de Surf',
   whatsapp: '5521996271203', // Retained from the approved site. Owner must reconfirm before launch.

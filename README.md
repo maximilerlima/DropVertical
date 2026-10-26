@@ -15,19 +15,21 @@ No repositório, abra **Settings → Pages** e selecione:
 
 Endereço esperado depois de habilitar e concluir a publicação:
 
-https://maximilerlima.github.io/DropVertical/
+https://dropverticalrj.com.br/
+
+O domínio próprio está configurado em `docs/CNAME`. O build lê esse arquivo automaticamente e publica os caminhos na raiz (`/assets/...`, `/en/`, `/es/`), sem o prefixo `/DropVertical/`. Se o domínio mudar, atualize o CNAME antes de reconstruir. Uma variável `PAGES_URL` incompatível com esse domínio causa erro de build para evitar repetir a quebra de CSS e imagens.
 
 A ativação do Pages depende das configurações administrativas do repositório. A presença dos arquivos não comprova que o Pages já esteja ativo.
 
 ## SEO antes do domínio definitivo
 
-Esta versão mantém `noindex,follow` para revisão, conforme a preparação anterior de SEO. Os endereços canonical/hreflang e o sitemap já usam o caminho correto `/DropVertical/`. A indexação deve ser liberada quando o proprietário confirmar a URL pública definitiva e os dados comerciais.
+Esta versão mantém `noindex,follow` para revisão, conforme a preparação anterior de SEO. Os endereços canonical/hreflang e o sitemap usam o domínio próprio definido no CNAME. A indexação deve ser liberada em uma etapa separada, quando o proprietário confirmar os dados comerciais.
 
 O `robots.txt` de um site de projeto fica em `/DropVertical/robots.txt`, mas os mecanismos de busca procuram o arquivo na raiz do domínio. No GitHub Pages de projeto, não é possível controlar o robots global de `maximilerlima.github.io` por este repositório. A diretiva `noindex` é entregue no HTML de cada página.
 
 GitHub Pages não aplica `_headers`, `_redirects` ou `.htaccess`. Não usamos esses arquivos como promessa de cache, cabeçalhos ou redirecionamentos. A página `404.html` oferece retorno aos três idiomas.
 
-Não foi criado `CNAME`, pois nenhum domínio próprio foi informado.
+O `CNAME` adicionado pelo proprietário é preservado pelo build.
 
 ## Atualização do site
 

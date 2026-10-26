@@ -9,7 +9,7 @@ const origin=new URL(config.url).origin;
 const prefix=config.basePath;
 const routes=JSON.parse(await fs.readFile(path.join(root,'reports/routes.json'),'utf8')).pages;
 
-test('21 localized documents use the actual GitHub Pages project prefix',async()=>{
+test('21 localized documents use the configured hosting base path',async()=>{
  for(const p of routes){
   const file=path.join(root,'docs',p.route,'index.html');
   const {document:d}=parseHTML(await fs.readFile(file,'utf8'));
@@ -28,7 +28,8 @@ test('21 localized documents use the actual GitHub Pages project prefix',async()
 });
 test('CSS image URLs are adapted, images are local, no Jekyll is enabled',async()=>{
  const css=await fs.readFile(path.join(root,'docs/assets/site.css'),'utf8');
- assert.ok(!css.includes("url('/assets/"));
+ if(prefix)assert.ok(!css.includes("url('/assets/"));
+ else assert.ok(css.includes("url('/assets/"));
  for(const match of css.matchAll(/url\(['"]?([^)'"\s]+)['"]?\)/g)){
   const value=match[1];if(!value.startsWith('/'))continue;
   assert.ok(value.startsWith(prefix+'/'));
@@ -47,4 +48,24 @@ test('sitemap and structured data do not retain Sites or unprefixed GitHub URLs'
   const values=[...json.matchAll(/https:\/\/maximilerlima\.github\.io[^" ]*/g)].map(x=>x[0]);
   assert.ok(values.every(x=>x.startsWith(config.url)));
  }
+});
+
+test('custom domain serves CSS, JS, images and navigation at the root',async()=>{
+ const cname=await fs.readFile(path.join(root,'docs/CNAME'),'utf8').then(x=>x.trim()).catch(()=>null);
+ if(!cname)return;
+ assert.equal(config.url,`https://${cname}/`);
+ assert.equal(config.basePath,'');
+ for(const p of routes){
+  const content=await fs.readFile(path.join(root,'docs',p.route,'index.html'),'utf8');
+  assert.ok(!content.includes('/DropVertical/'),p.route);
+  const {document:d}=parseHTML(content);
+  assert.ok(d.querySelector('link[rel=stylesheet][href^="/assets/site.css"]'));
+  assert.ok(d.querySelector('script[src^="/assets/site.js"]'));
+  for(const img of d.querySelectorAll('img[srcset]'))for(const entry of img.getAttribute('srcset').split(',')){
+   const src=entry.trim().split(' ')[0];assert.ok(src.startsWith('/assets/'));
+   await fs.access(path.join(root,'docs',src));
+  }
+ }
+ const css=await fs.readFile(path.join(root,'docs/assets/site.css'),'utf8');
+ assert.ok(!css.includes('/DropVertical/'));
 });
